@@ -3,24 +3,26 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_cake_shop_app/models/case_shop.dart';
+import 'package:flutter_cake_shop_app/views/cake_shop_list_ui.dart';
+import 'package:flutter_cake_shop_app/views/cake_shop_list_detail.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CakeShopListUi extends StatefulWidget {
   const CakeShopListUi({super.key});
 
   @override
-  State<CakeShopListUi> createState() => _CakeShopListUi();
+  State<CakeShopListUi> createState() => _CakeShopListUiState();
 }
 
-class _CakeShopListUi extends State<CakeShopListUi> {
-  //ตัวแปรเก็บที่อยู่รูปที่จะใช้กับ Slider
+class _CakeShopListUiState extends State<CakeShopListUi> {
+  //ตัวแปรเก็บรูปที่จะใช้กับ slider
   List<String> imgCakeShop = [
-    'assets/images/ck01.png',
-    'assets/images/ck02.png',
-    'assets/images/ck03.png',
-    'assets/images/ck04.png',
-    'assets/images/ck05.png',
-    'assets/images/ck06.png',
+    'assests/images/ck01.png',
+    'assests/images/ck02.png',
+    'assests/images/ck03.png',
+    'assests/images/ck04.png',
+    'assests/images/ck05.png',
+    'assests/images/ck06.png',
     'assets/images/ck07.png',
   ];
 
@@ -132,6 +134,7 @@ class _CakeShopListUi extends State<CakeShopListUi> {
       longitude: '100.5705757',
     ),
   ];
+
   Future<void> _makePhoneCall(String phoneNumber) async {
     final Uri launchUri = Uri(
       scheme: 'tel',
@@ -188,7 +191,15 @@ class _CakeShopListUi extends State<CakeShopListUi> {
                   itemBuilder: (context, index) {
                     return ListTile(
                       onTap: () {
-                        _makePhoneCall(cakeShops[index].image1!);
+                        //เปิดไปหน้า cakeshop detailUI แบบย้อนกลับได้ พร้อมส่งข่อมูลร้านไปด้วย
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CakeShopListDetail(
+                              cakeShop: cakeShops[index],
+                            ),
+                          ),
+                        );
                       },
                       leading: Image.asset(
                         'assets/images/' + cakeShops[index].image1!,
