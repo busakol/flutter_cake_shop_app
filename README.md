@@ -23,3 +23,6 @@ samples, guidance on mobile development, and a full API reference.
 <kbd>
 <img width="345" height="734" alt="image" src="https://github.com/user-attachments/assets/06af0950-f8c1-427e-b552-977847dc6a05" />
 </kbd>
+<kbd>
+<img width="344" height="739" alt="image" src="https://github.com/user-attachments/assets/d8e339ef-948b-49f7-a1de-bbdc13395e36" />
+</kbd>
